@@ -41,7 +41,7 @@ typedef NS_ENUM(NSInteger, REMenuLiveBackgroundStyle) {
     REMenuLiveBackgroundStyleDark
 };
 
-@interface REMenu : NSObject 
+@interface REMenu : NSObject
 
 // Data
 //
@@ -98,6 +98,7 @@ typedef NS_ENUM(NSInteger, REMenuLiveBackgroundStyle) {
 @property (copy, readwrite, nonatomic) void (^badgeLabelConfigurationBlock)(UILabel *badgeLabel, REMenuItem *item);
 
 - (id)initWithItems:(NSArray *)items;
+- (id)initWithContentViewController:(UIViewController *)viewController;
 - (void)showFromRect:(CGRect)rect inView:(UIView *)view;
 - (void)showInView:(UIView *)view;
 - (void)showFromNavigationController:(UINavigationController *)navigationController;
