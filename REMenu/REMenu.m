@@ -92,6 +92,8 @@
         self.bounceAnimationDuration = 0.2;
         
         self.appearsBehindNavigationBar = REUIKitIsFlatMode() ? YES : NO;
+        
+        self.backgroundButtonColor = [UIColor clearColor];
     }
     return self;
 }
@@ -179,6 +181,8 @@
     
     self.backgroundButton = ({
         UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+        button.backgroundColor = self.backgroundButtonColor;
+        button.alpha = 0.0f;
         button.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
         button.accessibilityLabel = NSLocalizedString(@"Menu background", @"Menu background");
         button.accessibilityHint = NSLocalizedString(@"Double tap to close", @"Double tap to close");
@@ -273,6 +277,7 @@
                  CGRect frame = self.menuWrapperView.bounds;
                  frame.origin.y = - self.separatorHeight;
                  self.menuWrapperView.frame = frame;
+                 self.backgroundButton.alpha = 1.0;
              }
                              completion:^(BOOL finished)
              {
@@ -289,6 +294,7 @@
                  CGRect frame = self.menuWrapperView.bounds;
                  frame.origin.y = - self.separatorHeight;
                  self.menuWrapperView.frame = frame;
+                 self.backgroundButton.alpha = 1.0;
              }
                              completion:^(BOOL finished)
              {
@@ -308,6 +314,7 @@
             CGRect frame = self.menuWrapperView.bounds;
             frame.origin.y = - self.separatorHeight;
             self.menuWrapperView.frame = frame;
+            self.backgroundButton.alpha = 1.0;
         }
         completion:^(BOOL finished)
         {
@@ -352,6 +359,7 @@
             frame.origin.y = - self.combinedHeight - navigationBarOffset;
             self.menuWrapperView.frame = frame;
             self.backgroundView.alpha = 0;
+            self.backgroundButton.alpha = 0;
         }
         completion:^(BOOL finished)
         {
