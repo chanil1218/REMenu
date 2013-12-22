@@ -339,6 +339,8 @@
     if (self.appearsBehindNavigationBar) {
         [navigationController.view bringSubviewToFront:navigationController.navigationBar];
     }
+    
+    self.navBarHairlineImageView = [self findHairlineImageViewUnder:self.navigationBar];
 }
 
 - (void)closeWithCompletion:(void (^)(void))completion
@@ -437,6 +439,21 @@
     UIGraphicsEndImageContext();
     
     return [UIImage imageWithCGImage:outputImage.CGImage scale:2.0 orientation:UIImageOrientationUp];
+}
+
+
+- (UIImageView *)findHairlineImageViewUnder:(UIView *)view {
+    // Find 1px hairline under navigation bar (Reference - http://stackoverflow.com/questions/19226965/how-to-hide-ios7-uinavigationbar-1px-bottom-line/19227158#19227158)
+    if ([view isKindOfClass:UIImageView.class] && view.bounds.size.height == 0.5) {
+        return (UIImageView *)view;
+    }
+    for (UIView *subview in view.subviews) {
+        UIImageView *imageView = [self findHairlineImageViewUnder:subview];
+        if (imageView) {
+            return imageView;
+        }
+    }
+    return nil;
 }
 
 @end

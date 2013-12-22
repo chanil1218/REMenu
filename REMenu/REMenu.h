@@ -97,6 +97,7 @@ typedef NS_ENUM(NSInteger, REMenuLiveBackgroundStyle) {
 @property (assign, readwrite, nonatomic) REMenuLiveBackgroundStyle liveBlurBackgroundStyle; // Available only in iOS 7
 @property (copy, readwrite, nonatomic) void (^badgeLabelConfigurationBlock)(UILabel *badgeLabel, REMenuItem *item);
 @property (strong, readwrite, nonatomic) UIColor *backgroundButtonColor;
+@property (strong, readwrite, nonatomic) UIImageView *navBarHairlineImageView;
 
 - (id)initWithItems:(NSArray *)items;
 - (id)initWithContentViewController:(UIViewController *)viewController;
