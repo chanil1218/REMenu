@@ -115,7 +115,6 @@
     //
     //self.menu.liveBlur = YES;
     //self.menu.liveBlurBackgroundStyle = REMenuLiveBackgroundStyleDark;
-    //self.menu.liveBlurTintColor = [UIColor redColor];
     
     self.menu.imageOffset = CGSizeMake(5, -1);
     self.menu.waitUntilAnimationIsComplete = NO;
@@ -123,6 +122,16 @@
         badgeLabel.backgroundColor = [UIColor colorWithRed:0 green:179/255.0 blue:134/255.0 alpha:1];
         badgeLabel.layer.borderColor = [UIColor colorWithRed:0.000 green:0.648 blue:0.507 alpha:1.000].CGColor;
     };
+    
+    
+    [self.menu setClosePreparationBlock:^{
+        NSLog(@"Menu will close");
+    }];
+    
+    [self.menu setCloseCompletionHandler:^{
+        NSLog(@"Menu did close");
+    }];
+    
 }
 
 - (void)toggleMenu
